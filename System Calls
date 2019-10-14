@@ -1,0 +1,63 @@
+fork()
+	create a child process
+	#include <unistd.h> and #include<sys/types.h>
+	pid_t fork(void);
+	
+DESCRIPTION
+       fork()  creates  a new process by duplicating the calling process.  The
+       new process, referred to as the child, is an  exact  duplicate  of  the
+       calling  process,  referred  to as the parent, except for the following
+       points:
+
+	The child has its own unique process ID.
+
+sleep()
+	delay for a specified amount of time
+	Pause for NUMBER seconds. 
+
+	sleep NUMBER[SUFFIX]
+
+getpid() and getppid()
+	get process and its parent identification
+
+	#include <sys/types.h>
+       #include <unistd.h>
+
+       pid_t getpid(void);
+       pid_t getppid(void);
+
+
+wait()
+	wait for process to change state.
+	#include <sys/types.h>
+       #include <sys/wait.h>
+
+       pid_t wait(int *status);
+	wait(v) waits for a child process of the current process to terminate. When one 		does, wait stores the termination status of the terminated child (the value returned 		by main) into variable status, and returns the process number of the terminated 	child process. 
+
+	A state change is considered to be: the child  ter‐
+       minated; the child was stopped by a signal; or the child was resumed by
+       a signal.
+
+	A call to wait() blocks the calling process until one of its child processes exits or a 	signal is received.
+
+
+execv()    unistd.h.
+	execute program.
+	v – Command-line arguments are passed to the function as an array (vector) of 		pointers.
+
+	The  exec() family of functions replaces the current process image with a new 		process image. 
+
+RETURN VALUE
+       The  exec() functions return only if an error has occurred.  The return
+       value is -1, and errno is set to indicate the error.
+
+execv(path,argv) causes the current process to abandon the program that it is running and start running the program in file path.
+
+int execvp (const char *file, char *const argv[]);
+file: points to the file name associated with the file being executed.
+argv:  is a null terminated array of character pointers.
+
+
+
+
